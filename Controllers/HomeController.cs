@@ -8,4 +8,32 @@ public class HomeController : Controller
     {
         return View();
     }
+    public IActionResult VerDetallePartido(int idPartido)
+    {
+
+    }
+    IActionResult VerDetalleCandidato(int idCandidato)
+    {
+
+    }
+    IActionResult AgregarCandidato(int idPartido)
+    {
+
+    }
+    [HttpPost] IActionResult GuardarCandidato(Candidato can)
+    {
+
+    }
+    IActionResult EliminarCandidato(int idCandidato, int idPartido)
+    {
+
+    }
+    IActionResult Elecciones()
+    {
+
+    }
+    IActionResult Creditos()
+    {
+        
+    }
 }
