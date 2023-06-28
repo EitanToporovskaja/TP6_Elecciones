@@ -4,6 +4,10 @@ namespace TP6_Elecciones.Controllers;
 
 public class HomeController : Controller
 {
+    public void CargarViewBags()
+    {
+        
+    }
     public IActionResult Index()
     {
         return View();
