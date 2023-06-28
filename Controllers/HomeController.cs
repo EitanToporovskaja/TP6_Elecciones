@@ -6,7 +6,12 @@ public class HomeController : Controller
 {
     public void CargarViewBags()
     {
-        
+        ViewBag.ListarCandidatos=BD.ListarCandidatos;
+        ViewBag.ListarPartidos=BD.ListarPartidos;
+        ViewBag.AgregarCandidato=BD.AgregarCandidato;
+        ViewBag.EliminarCandidato=BD.EliminarCandidato;
+        ViewBag.VerInfoCandidato=BD.VerInfoCandidato;
+        ViewBag.VerInfoPartido=BD.VerInfoPartido;
     }
     public IActionResult Index()
     {
