@@ -24,12 +24,16 @@ public class BD
     }
     public static Candidato VerInfoCandidato(int idCandidato)
     {
+         using(SqlConnection db = new SqlConnection(_connectionString)){
+            string sql ="SELECT Candidato FROM Partido WHERE Candidato=@Partido";
+            MiPartido= db.QueryFirstordefault<PArtido>(sql,new {Partido =Partido});
+            }
         return Candidato;
     }
     public static List<Partido> ListarPartidos()
     {
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql ="SELECT * FROM Partidos";
+            string sql ="SELECT * FROM Partido";
             _ListaPartidos = db.Query<Partido>(sql).ToList();
         }
         return;
