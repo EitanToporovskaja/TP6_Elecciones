@@ -47,7 +47,7 @@ public class BD
         }
         return _ListaPartido;
     }
-    public static List<Candidato> ListarCandidatos(int idPartidos)
+    public static List<Candidato> ListarCandidatos(int idPartido)
     {
         using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql ="SELECT * FROM Candidato";
