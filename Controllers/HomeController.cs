@@ -4,6 +4,7 @@ namespace TP6_Elecciones.Controllers;
 
 public class HomeController : Controller
 {
+    /*hola*/
     public IActionResult Index()
     {
         ViewBag.ListarPartido = BD.ListarPartido();
