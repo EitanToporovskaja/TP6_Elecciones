@@ -1,0 +1,84 @@
+.Navegador
+{
+    float:right;
+} 
+.Navegador ul
+{
+    margin: 0px;
+    padding: 20px;
+    padding-left: 0px;
+    padding-right: 0px;
+    background-color: #4f00aa;
+}
+.Navegador ul li
+{
+    margin: 0px;
+    display: inline; 
+    padding: 0px;
+    background-color: #4f00aa;
+}
+.Navegador ul li a:hover:not(.Presente a)
+{
+    margin: 0px;
+    text-decoration:underline;
+}
+.Navegador ul li a
+{
+    margin: 0px;
+    padding: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    list-style-type: none;
+    text-decoration: none;
+    text-align: center;
+    color: #c666a0;
+}
+.Presente a
+{
+    margin: 0px;
+    background-color:#3c047c;
+}
+
+.know h1{
+    color:#4f00aa;
+    margin-bottom: 3%;
+}
+.know h1:hover
+{
+   font-size: 155px;
+   color:#ffe77b;
+}
+.info1{
+   position: absolute;
+   top: 350px;
+   margin: 3%;
+}
+.info1 div{
+   
+   width:70%;
+   height: 20%;
+   margin: 0;
+   margin-top: 1%;
+   font-size: small;
+   color: #9c48f7;
+}
+.info1 .izq{
+   float: left;
+}
+.info1 .der{
+   float: right;
+}
+.info1 div:hover
+{
+   background-color: rgb(255, 255, 106);
+   width: 80%;
+   height: auto;
+   padding: 10px;
+   margin: 1%;
+   font-weight: bolder;
+   font-size: medium;
+   color: #000000;
+}
+.info1 img{
+   width: 100%;
+   height: auto;
+}

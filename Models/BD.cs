@@ -4,9 +4,9 @@ using Dapper;
 namespace TP6_Elecciones;
 public class BD
 {
-    private static string _connectionString=@"Server=BD;DataBase=ELecciones2023;Trusted_Connection=True";
-    private static List<Partido>_ListaPartido = new List<Partido>();
-    private static List<Candidato>_ListaCandidato = new List<Candidato>();
+    private static string _connectionString=@"Server=localhost;DataBase=Elecciones2023;Trusted_Connection=True";
+    private static List<Partido>_ListarPartido = new List<Partido>();
+    private static List<Candidato>_ListarCandidato = new List<Candidato>();
     public static void AgregarCandidato(Candidato can)
     {
         string sql ="INSERT INTO Candidato(IdCandidato,IdPartido,Apellido,Nombre,FechaNaciemiento,Foto,Postulacion)VALUES(@cIdCandidato,@cIdPartido,@cApellido,@cNombre,@cFechaNaciemiento,@cFoto,@cPostulacion)";
@@ -41,20 +41,20 @@ public class BD
             }
         return MiCandidato;
     }
-    public static List<Partido> ListarPartidos()
+    public static List<Partido> ListarPartido()
     {
         using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql ="SELECT * FROM Partido";
-            _ListaPartido = db.Query<Partido>(sql).ToList();
+            _ListarPartido = db.Query<Partido>(sql).ToList();
         }
-        return _ListaPartido;
+        return _ListarPartido;
     }
     public static List<Candidato> ListarCandidatos(int idPartido)
     {
         using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql ="SELECT * FROM Candidato";
-            _ListaCandidato = db.Query<Candidato>(sql).ToList();
+            _ListarCandidato = db.Query<Candidato>(sql).ToList();
         }
-        return _ListaCandidato;
+        return _ListarCandidato;
     }
 }

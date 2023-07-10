@@ -6,7 +6,7 @@ public class HomeController : Controller
 {
     public IActionResult Index()
     {
-        ViewBag.ListaPartidos = BD.ListarPartidos();
+        ViewBag.ListarPartido = BD.ListarPartido();
         return View();
     }
     public IActionResult VerDetallePartido(int idPartido)
