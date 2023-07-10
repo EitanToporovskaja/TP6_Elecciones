@@ -11,10 +11,10 @@ public class BD
     {
         string sql ="INSERT INTO Candidato(IdCandidato,IdPartido,Apellido,Nombre,FechaNaciemiento,Foto,Postulacion)VALUES(@cIdCandidato,@cIdPartido,@cApellido,@cNombre,@cFechaNaciemiento,@cFoto,@cPostulacion)";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(SQL, new {cIdCandidato = can.IdCandidato,cIdPartido = can.IdPartido,cApellido = can.Apellido, cNombre = can.Nombre, cFechaNaciemiento = can.FechaNaciemiento, cFoto = can.Foto, cPostulacion = can.Postulacion});
+            db.Execute(sql, new {cIdCandidato = can.IdCandidato,cIdPartido = can.IdPartido,cApellido = can.Apellido, cNombre = can.Nombre, cFechaNaciemiento = can.FechaNacimiento, cFoto = can.Foto, cPostulacion = can.Postulacion});
         }
     }
-    public static void EliminarCandidato(int idCandidato)
+    public static int EliminarCandidato(int idCandidato)
     {
         int RegistrosEliminados = 0;
         string sql ="DELETE FROM Candidato WHERE Partido =@Candidato";
@@ -25,19 +25,21 @@ public class BD
     }
     public static Partido VerInfoPartido(int idPartido)
     {
+        Partido MiPartido;
         using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql ="SELECT Candidato FROM Partido WHERE Candidato = @pPartido";
-            MiPartido= db.QueryFirstOrDefault<Partido>(sql,new {pPartido =Partido});
+            MiPartido= db.QueryFirstOrDefault<Partido>(sql,new {pPartido =idPartido});
             }
-        return Partido;
+        return MiPartido;
     }
     public static Candidato VerInfoCandidato(int idCandidato)
     {
+        Candidato MiCandidato;
          using(SqlConnection db = new SqlConnection(_connectionString)){
             string sql ="SELECT Partido FROM Candidato WHERE Partido = @cCandidato";
-            MiCandidato= db.QueryFirstOrDefault<Candidato>(sql,new {cCandidato =Candidato});
+            MiCandidato= db.QueryFirstOrDefault<Candidato>(sql,new {cCandidato =idCandidato});
             }
-        return Candidato;
+        return MiCandidato;
     }
     public static List<Partido> ListarPartidos()
     {

@@ -1,9 +1,21 @@
-@{
+<header>
+     <link rel="stylesheet" href="style.css"> 
+</header>
+<body>
+    @{
     ViewData["Tirle"]="Layout";
 }
 <h1>Layout</h1>
 <a href='@Url.Action("","")' alt=""></a>
-
 <a href='@Url.Action("Index")'></a>
 <a href='@Url.Action("Elecciones")'></a>
 <a href='@Url.Action("Creditos")'></a>
+
+<nav class="Navegador">
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href="VerDetalleCandidato.html"><img src="wwwroot/imgs/AlbertoFernandez.jfif"></a></li>
+            <li class="Presente"><a href="Creditos.html"></a></li>
+        </ul>
+    </nav>
+</body>

@@ -5,5 +5,13 @@ public class Partido{
     public string SitioWeb {get; set;}
     public DateTime FechaFundacion {get; set;}
     public int CantidadDiputados {get; set;}
-    public int CantidadCenadores {get; set;}
+    public int CantidadSenadores {get; set;}
+   public Partido(string nom, string sitweb, DateTime fechafundacion, int cantDiputados, int cantSenadores, string logo){
+        Nombre = nom; 
+        Logo = logo;
+        SitioWeb = sitweb; 
+        FechaFundacion = fechafundacion; 
+        CantidadDiputados = cantDiputados; 
+        CantidadSenadores = cantSenadores; 
+    }
 }

@@ -1,6 +1,18 @@
-@{
+<header>
+     <link rel="stylesheet" href="style.css"> 
+</header>
+<body>
+    @{
     ViewData["Tirle"]="Creditos";
 }
+<nav class="Navegador">
+        <ul>
+            <li><a href="Index.html">Home</a></li>
+            <li><a href=".html">Discos</a></li>
+            <li class="Presente"><a href="Creditos.html">Do you know?</a></li>
+        </ul>
+    </nav>
+    
 <h1>Creditos</h1>
 
 <a href='@Url.Action("AgregarCandidato","Candidato")' alt="">Agregar Candidato</a>
@@ -13,3 +25,4 @@
     <p>Desarrollador frontent y backend</p>
     <img src="~/wwwrot/imgs/Eitan.jfif">
 </div>
+</body>

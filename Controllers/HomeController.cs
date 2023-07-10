@@ -4,17 +4,15 @@ namespace TP6_Elecciones.Controllers;
 
 public class HomeController : Controller
 {
-    public void CargarViewBags()
-    {
-        ViewBag.ListarCandidatos=BD.ListarCandidatos;
-        ViewBag.ListarPartidos=BD.ListarPartidos;        
-    }
     public IActionResult Index()
     {
+        ViewBag.ListaPartidos = BD.ListarPartidos();
         return View();
     }
     public IActionResult VerDetallePartido(int idPartido)
     {
+        ViewBag.Partido = BD.VerInfoPartido(idPartido);
+        ViewBag.CandidatosPartido = BD.ListarCandidatos(idPartido);
         ViewBag.InfoPartido=BD.VerInfoPartido(idPartido);
         return View();
     }
@@ -25,18 +23,20 @@ public class HomeController : Controller
     }
     IActionResult AgregarCandidato(int idPartido)
     {
-        ViewBag.AgregarCandidato=BD.AgregarCandidato(idPartido);
+        ViewBag.IdPartido = idPartido;
         return View();
     }
     [HttpPost] IActionResult GuardarCandidato(Candidato can)
     {
-        BD.ListarCandidatos(can);
-        return View();
+        BD.AgregarCandidato(can);
+        ViewBag.Partido = BD.VerInfoPartido(can.IdPartido);
+        ViewBag.ListarCandidatos = BD.ListarCandidatos(can.IdPartido);
+        return View("VerDetallePartido");
     }
     IActionResult EliminarCandidato(int idCandidato, int idPartido)
     {
         ViewBag.EliminarCandidato=BD.EliminarCandidato(idCandidato);
-        return View();
+        return View("VerDetallePartido");
     }
     IActionResult Elecciones()
     {
