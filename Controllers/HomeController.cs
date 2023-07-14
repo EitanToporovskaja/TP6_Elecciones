@@ -16,12 +16,12 @@ public class HomeController : Controller
         ViewBag.InfoPartido=BD.VerInfoPartido(idPartido);
         return View();
     }
-    IActionResult VerDetalleCandidato(int idCandidato)
+    public IActionResult VerDetalleCandidato(int idCandidato)
     {
         ViewBag.InfoCandidato = BD.VerInfoCandidato(idCandidato);
         return View();
     }
-    IActionResult AgregarCandidato(int idPartido)
+    public IActionResult AgregarCandidato(int idPartido)
     {
         ViewBag.IdPartido = idPartido;
         return View();
@@ -33,16 +33,16 @@ public class HomeController : Controller
         ViewBag.ListarCandidatos = BD.ListarCandidatos(can.IdPartido);
         return View("VerDetallePartido");
     }
-    IActionResult EliminarCandidato(int idCandidato, int idPartido)
+    public IActionResult EliminarCandidato(int idCandidato, int idPartido)
     {
         ViewBag.EliminarCandidato=BD.EliminarCandidato(idCandidato);
         return View("VerDetallePartido");
     }
-    IActionResult Elecciones()
+    public IActionResult Elecciones()
     {
         return View();
     }
-    IActionResult Creditos()
+    public IActionResult Creditos()
     {
         return View();
     }
