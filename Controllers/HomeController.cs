@@ -24,7 +24,7 @@ public class HomeController : Controller
     public IActionResult AgregarCandidato(int idPartido)
     {
         ViewBag.IdPartido = idPartido;
-        return View();
+        return View("AgregarCandidato", new Candidato{IdPartido=idPartido});
     }
     [HttpPost] IActionResult GuardarCandidato(Candidato can)
     {
@@ -36,7 +36,7 @@ public class HomeController : Controller
     public IActionResult EliminarCandidato(int idCandidato, int idPartido)
     {
         ViewBag.EliminarCandidato=BD.EliminarCandidato(idCandidato);
-        return View("VerDetallePartido");
+        return RedirectToAction("VerDetallePartido", new { idPartido=idPartido});
     }
     public IActionResult Elecciones()
     {

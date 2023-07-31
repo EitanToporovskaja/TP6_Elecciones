@@ -9,15 +9,15 @@ public class BD
     private static List<Candidato>_ListarCandidato = new List<Candidato>();
     public static void AgregarCandidato(Candidato can)
     {
-        string sql ="INSERT INTO Candidato(IdCandidato,IdPartido,Apellido,Nombre,FechaNaciemiento,Foto,Postulacion)VALUES(@cIdCandidato,@cIdPartido,@cApellido,@cNombre,@cFechaNaciemiento,@cFoto,@cPostulacion)";
+        string sql ="INSERT INTO Candidato(IdPartido,Apellido,Nombre,FechaNaciemiento,Foto,Postulacion)VALUES(@cIdPartido,@cApellido,@cNombre,@cFechaNaciemiento,@cFoto,@cPostulacion)";
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            db.Execute(sql, new {cIdCandidato = can.IdCandidato,cIdPartido = can.IdPartido,cApellido = can.Apellido, cNombre = can.Nombre, cFechaNaciemiento = can.FechaNacimiento, cFoto = can.Foto, cPostulacion = can.Postulacion});
+            db.Execute(sql, new {cIdPartido = can.IdPartido,cApellido = can.Apellido, cNombre = can.Nombre, cFechaNaciemiento = can.FechaNacimiento, cFoto = can.Foto, cPostulacion = can.Postulacion});
         }
     }
     public static int EliminarCandidato(int idCandidato)
     {
         int RegistrosEliminados = 0;
-        string sql ="DELETE FROM Candidato WHERE Partido =@Candidato";
+        string sql ="DELETE FROM Candidato WHERE IdCandidato =@Candidato";
         using(SqlConnection db = new SqlConnection(_connectionString)){
             RegistrosEliminados = db.Execute(sql, new {Candidato=idCandidato});
         }
@@ -27,7 +27,7 @@ public class BD
     {
         Partido MiPartido;
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql ="SELECT Candidato FROM Partido WHERE Candidato = @pPartido";
+            string sql ="SELECT * FROM Partido WHERE IdPartido = @pPartido";
             MiPartido= db.QueryFirstOrDefault<Partido>(sql,new {pPartido =idPartido});
             }
         return MiPartido;
@@ -36,8 +36,8 @@ public class BD
     {
         Candidato MiCandidato;
          using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql ="SELECT Partido FROM Candidato WHERE Partido = @cCandidato";
-            MiCandidato= db.QueryFirstOrDefault<Candidato>(sql,new {cCandidato =idCandidato});
+            string sql ="SELECT * FROM Candidato WHERE IdCandidato = @cCandidato";
+            MiCandidato= db.QueryFirstOrDefault<Candidato>(sql, new { cCandidato =idCandidato });
             }
         return MiCandidato;
     }
@@ -52,8 +52,8 @@ public class BD
     public static List<Candidato> ListarCandidatos(int idPartido)
     {
         using(SqlConnection db = new SqlConnection(_connectionString)){
-            string sql ="SELECT * FROM Candidato";
-            _ListarCandidato = db.Query<Candidato>(sql).ToList();
+            string sql ="SELECT * FROM Candidato WHERE IdPartido=@pIdPartido";
+            _ListarCandidato = db.Query<Candidato>(sql, new {pIdPartido=idPartido} ).ToList();
         }
         return _ListarCandidato;
     }

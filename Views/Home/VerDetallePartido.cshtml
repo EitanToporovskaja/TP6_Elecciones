@@ -2,19 +2,16 @@
      <link rel="stylesheet" href="style.css"> 
 
     @{
-    ViewData["Tirle"]="DetallePartido";
+    ViewData["Title"]="DetallePartido";
 }
-<nav class="Navegador">
-    <ul>
-        <li><a href="Index.html"><img src="~/imgs/BanderaArgentina.jfif"></a></li>
-        <li><a href='@Url.Action("Elecciones")'></a>Elecciones</li>
-        <li><a href='@Url.Action("Creditos")'></a>Creditos</li>
-    </ul>
-</nav>
 <h1>Detalle Partido</h1>
 
-<a href='@Url.Action("AgregarCandidato","Candidato")' alt="">Agregar Candidato</a>
-<a href='@Url.Action("VerDetalleCandidato","DetalleCandidato")' alt="">Ver Detalle Del Candidato</a>
-<a href='@Url.Action("VerDetallePartido","DetallePartido")' alt="">Ver Detalle Del Partido</a>
-<a href='@Url.Action("Creditos","Creditos")' alt="">Creditos</a>
-
+@foreach (Candidato i in ViewBag.CandidatosPartido)
+{
+    <h1>Nombre del/a Candidato/a: @i.Nombre</h1>
+    <h1>Apellido del/a Candidato/a: @i.Apellido</h1>
+    <h1>Fecha de nacimiento del/a Candidato/a: @i.FechaNacimiento</h1>
+    <h1>El/La Candidato/a se postula a: @i.Postulacion</h1>
+    <a href='@Url.Action("EliminarCandidato",new {idCandidato=@i.IdCandidato,idPartido=@i.IdPartido})'>Eliminar Candidato</a>
+    <a href='@Url.Action("VerDetalleCandidato",new {idCandidato=@i.IdCandidato,idPartido=@i.IdPartido})'>Ver Detalle Candidato</a>
+}

@@ -2,23 +2,9 @@
      <link rel="stylesheet" href="style.css"> 
 
     @{
-    ViewData["Tirle"]="AgregarCandidato";
+    ViewData["Title"]="AgregarCandidato";
 }
-<nav class="Navegador">
-    <ul>
-        <li><a href="Index.html"><img src="~/imgs/BanderaArgentina.jfif"></a></li>
-        <li><a href='@Url.Action("Elecciones")'></a>Elecciones</li>
-        <li><a href='@Url.Action("Creditos")'></a>Creditos</li>
-    </ul>
-</nav>
-
 <h1>Agregar Candidato</h1>
-
-<a href='@Url.Action("AgregarCandidato","Candidato")' alt="">Agregar Candidato</a>
-<a href='@Url.Action("VerDetalleCandidato","DetalleCandidato")' alt="">Ver Detalle Del Candidato</a>
-<a href='@Url.Action("VerDetallePartido","DetallePartido")' alt="">Ver Detalle Del Partido</a>
-<a href='@Url.Action("Creditos","Creditos")' alt="">Creditos</a>
-
  <form action='@Url.Action("GuardarCandidato")' method="post">
     <input type="hidden" name="IdPartido" value="@ViewBag.IdPartido">
     <input type="text" name="Apellido" placeholder="Apellido">
